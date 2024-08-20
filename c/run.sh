@@ -4,6 +4,12 @@ set -e
 
 docker build -t pink-camp-design-patterns-c .
 
-echo "\n---\n"
+echo ""
+echo "---"
+echo ""
 
-docker run -it --rm --name pink-camp-design-patterns-c pink-camp-design-patterns-c
+if [ $(uname -s) = MINGW* ]; then
+  winpty docker run -it --rm --name pink-camp-design-patterns-c pink-camp-design-patterns-c
+else
+  docker run -it --rm --name pink-camp-design-patterns-c pink-camp-design-patterns-c
+fi
